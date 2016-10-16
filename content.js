@@ -1,16 +1,27 @@
 console.log("Wiki o' My Thumb (WOMT) extension loaded");
 
-var currentURL = $(location).attr('href');
-var startingPoint = 'https://fr.m.wikipedia.org/wiki/Cacaoyer';
-var endingPoint = 'https://fr.m.wikipedia.org/wiki/Unterseeboot';
+var currentUrl = $(location).attr('href');
 
-if (currentURL == startingPoint) {
+var sessions = [
+  {
+    id: 1,
+    startUrl: "https://fr.m.wikipedia.org/wiki/Cacaoyer",
+    endUrl: "https://fr.m.wikipedia.org/wiki/Unterseeboot"
+  },
+  {
+    id: 2,
+    startUrl: 'https://fr.m.wikipedia.org/wiki/Pandore',
+    endUrl: 'https://fr.m.wikipedia.org/wiki/Post-it'
+  }
+];
+
+if ( sessionId = sessionShouldStart() ) {
   // opening ceremony of the game
   console.log("WOMT game started");
-  localStorage.setItem("womt_current_game", "[]")
+  localStorage.setItem("womt_current_game", JSON.stringify({ "session_id": sessionId, "links": [] }));
 }
 
-else if (currentURL == endingPoint) {
+else if ( sessionShouldEnd() ) {
   // closing ceremony
   console.log("WOMT game ended");
   chrome.runtime.sendMessage({ "message": "womt_game_ended", "current_game": currentGame() });
@@ -23,6 +34,34 @@ else if (currentURL == endingPoint) {
 
 if (game = currentGame()) {
   storeClickedLinkFor(game);
+}
+
+function findSessionById(id) {
+  for (var i = 0; i < sessions.length; i++) {
+    if (sessions[i].id == id) {
+      return sessions[i];
+    }
+  }
+}
+
+function sessionShouldEnd() {
+  if (game = currentGame()) {
+    currentSessionId = game.session_id;
+
+    if (currentUrl == findSessionById(currentSessionId).endUrl) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+function sessionShouldStart() {
+  for (var i = 0; i < sessions.length; i++) {
+    if (currentUrl == sessions[i].startUrl) {
+      return sessions[i].id
+    }
+  };
 }
 
 function currentGame() {
@@ -40,7 +79,7 @@ function storeClickedLinkFor(currentGame) {
     }
 
     // add this object to the links bucket
-    currentGame.push(link);
+    currentGame.links.push(link);
 
     // store this bucket back
     localStorage.setItem("womt_current_game", JSON.stringify(currentGame));

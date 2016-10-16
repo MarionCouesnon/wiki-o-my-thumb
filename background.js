@@ -9,8 +9,10 @@ chrome.runtime.onMessage.addListener(
 function generateResultsFor(game) {
   var pdf = new jsPDF();
 
-  for (var i = 0; i < game.length; i++) {
-    pdf.text(20, 20 + (i * 10), game[i].text + " " + "(" + game[i].href + ")");
+  pdf.text(20, 20, "Session #" + game.session_id);
+
+  for (var i = 0; i < game.links.length; i++) {
+    pdf.text(20, 30 + (i * 10), game.links[i].text + " " + "(" + game.links[i].href + ")");
   }
 
   pdf.save("womt.pdf");
