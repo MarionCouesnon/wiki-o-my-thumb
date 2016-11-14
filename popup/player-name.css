@@ -9,3 +9,10 @@ html, body {
   padding-bottom: 20px;
   width: 100%;
 }
+
+.button {
+  background-color: #2B15FF;
+  color: #F8F8FF;
+  padding: 10px 20px;
+  text-decoration: none;
+}
