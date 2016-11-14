@@ -4,14 +4,14 @@
   "version": "2",
 
   "browser_action": {
-        "default_icon": {
-          "16": "images/icon16.png",
-          "24": "images/icon24.png",
-          "32": "images/icon32.png"
-        },
-        "default_title": "womt",
-        "default_popup": "popup.html"
-      },
+      "browser_style": true,
+      "default_popup": "popup/player-name.html",
+      "default_icon": {
+        "16": "images/icon16.png",
+        "24": "images/icon24.png",
+        "32": "images/icon32.png"
+      }
+    },
 
   "content_scripts": [
     {
