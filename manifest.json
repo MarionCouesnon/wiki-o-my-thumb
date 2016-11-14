@@ -1,7 +1,17 @@
 {
   "manifest_version": 2,
   "name": "Wiki-o'-My-Thumb",
-  "version": "0.1",
+  "version": "2",
+
+  "browser_action": {
+        "default_icon": {
+          "16": "images/icon16.png",
+          "24": "images/icon24.png",
+          "32": "images/icon32.png"
+        },
+        "default_title": "womt",
+        "default_popup": "popup.html"
+      },
 
   "content_scripts": [
     {

@@ -5,13 +5,48 @@ var currentUrl = $(location).attr('href');
 var sessions = [
   {
     id: 1,
-    startUrl: "https://fr.m.wikipedia.org/wiki/Cacaoyer",
-    endUrl: "https://fr.m.wikipedia.org/wiki/Unterseeboot"
+    startUrl: "https://fr.wikipedia.org/wiki/Cacaoyer",
+    endUrl: "https://fr.wikipedia.org/wiki/Unterseeboot"
   },
   {
     id: 2,
-    startUrl: 'https://fr.m.wikipedia.org/wiki/Pandore',
-    endUrl: 'https://fr.m.wikipedia.org/wiki/Post-it'
+    startUrl: 'https://fr.wikipedia.org/wiki/Pandore',
+    endUrl: 'https://fr.wikipedia.org/wiki/Post-it'
+  },
+  {
+    id: 3,
+    startUrl: 'https://fr.wikipedia.org/wiki/Paresseux',
+    endUrl: 'https://fr.wikipedia.org/wiki/Brucelles'
+  },
+  {
+    id: 4,
+    startUrl: 'https://fr.wikipedia.org/wiki/Super_Bowl',
+    endUrl: 'https://fr.wikipedia.org/wiki/Giacomo_Casanova'
+  },
+  {
+    id: 5,
+    startUrl: 'https://fr.wikipedia.org/wiki/Dopamine',
+    endUrl: 'https://fr.wikipedia.org/wiki/%C3%89conomie_circulaire'
+  },
+  {
+    id: 6,
+    startUrl: 'https://fr.wikipedia.org/wiki/V%C3%A9suve',
+    endUrl: 'https://fr.wikipedia.org/wiki/Deep_Blue'
+  },
+  {
+    id: 7,
+    startUrl: 'https://fr.wikipedia.org/wiki/Effet_Doppler',
+    endUrl: 'https://fr.wikipedia.org/wiki/Babylone'
+  },
+  {
+    id: 8,
+    startUrl: 'https://fr.wikipedia.org/wiki/Pentagramme',
+    endUrl: 'https://fr.wikipedia.org/wiki/Shinkansen'
+  },
+  {
+    id: 9,
+    startUrl: 'https://fr.wikipedia.org/wiki/Narcos',
+    endUrl: 'https://fr.wikipedia.org/wiki/Tay_(intelligence_artificielle)'
   }
 ];
 
