@@ -5,9 +5,9 @@ var currentUrl = $(location).attr('href');
 var sessions = [
   {
     id: 1,
-    startUrl: "https://fr.m.wikipedia.org/wiki/Cacaoyer",
-    endUrl: "https://fr.m.wikipedia.org/wiki/Unterseeboot"
-  },
+    startPage: "Cacaoyer",
+    endPage: "Unterseeboot"
+  }/*,
   {
     id: 2,
     startUrl: 'https://fr.wikipedia.org/wiki/Pentagramme',
@@ -47,14 +47,19 @@ var sessions = [
     id: 9,
     startUrl: 'https://fr.wikipedia.org/wiki/Narcos',
     endUrl: 'https://fr.wikipedia.org/wiki/Tay_(intelligence_artificielle)'
-  }
+  }*/
 ];
 
 if ( sessionId = sessionShouldStart() ) {
   // opening ceremony of the game
   console.log("WOMT game started");
-  chrome.runtime.sendMessage({ "message": "womt_game_start", "yo": "hey" });
-  localStorage.setItem("womt_current_game", JSON.stringify({ "session_id": sessionId, "links": [] }));
+  
+  localStorage.setItem("womt_current_game", JSON.stringify({ 
+    "session_id": sessionId, 
+    "startPage" : findSessionById(sessionId).startPage, 
+    "endPage" : findSessionById(sessionId).endPage, 
+    "links": [] 
+  }));
 }
 
 else if ( sessionShouldEnd() ) {
@@ -83,21 +88,30 @@ function findSessionById(id) {
 function sessionShouldEnd() {
   if (game = currentGame()) {
     currentSessionId = game.session_id;
+    
+    var wikiPageTitle = $('#firstHeading').text();
 
-    if (currentUrl == findSessionById(currentSessionId).endUrl) {
-      return true;
-    } else {
-      return false;
-    }
+    return (wikiPageTitle == findSessionById(currentSessionId).endPage);
   }
 }
 
 function sessionShouldStart() {
   for (var i = 0; i < sessions.length; i++) {
-    if (currentUrl == sessions[i].startUrl) {
+    
+/*
+    var s = currentUrl;
+    var regex = /https?:\/\/[a-zA-Z0-9\.]+\.wikipedia\.[a-zA-Z]{2,4}/;
+    
+    if (s.match(regex)) {
+*/
+      
+    var wikiPageTitle = $('#firstHeading').text();
+
+    if (wikiPageTitle == sessions[i].startPage) {
       return sessions[i].id
     }
-  };
+//    }
+  }
 }
 
 function currentGame() {

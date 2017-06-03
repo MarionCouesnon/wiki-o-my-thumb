@@ -11,18 +11,23 @@ function generateResultsFor(game) {
   
   var dot = 'digraph D { ';
   
+  dot += escapeWordForDot(game.startPage);
+  dot += ' -> ';
+  
   for (var i = 0; i < game.links.length; i++) {
-    dot += '"' + game.links[i].text + '"';
-    
-    if (i != game.links.length-1) {
-      dot += ' -> ';
-    }
+    dot += escapeWordForDot(game.links[i].text);
+    dot += ' -> ';
   }
   
+  dot += escapeWordForDot(game.endPage);
   dot += ' ; }';
   
   console.log(dot);
   
   var file = new File([dot], {type: "text/plain;charset=utf-8"});
   saveAs(file, "vis.dot");
+}
+
+function escapeWordForDot(word) {
+  return '"' + word + '"';
 }
