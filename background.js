@@ -15,10 +15,10 @@ function generateResultsFor(game) {
   if (factor < 3) {
     dotAttributes += 'edge[color=blue]';
   }
-  if (factor >= 3 && < 6) {
+  if (factor >= 3 && factor < 6) {
     dotAttributes += 'edge[color=red]';
   }
-  if (factor >= 6 && < 9) {
+  if (factor >= 6 && factor < 9) {
     dotAttributes += 'edge[color=yellow]';
   }
   if (factor >= 9) {
