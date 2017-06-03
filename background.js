@@ -11,10 +11,10 @@ function generateResultsFor(game) {
   
   var dot = 'digraph D { ';
   
-  for (var i = 0; i < request.current_game.links.length; i++) {
-    dot += '"' + request.current_game.links[i].text + '"';
+  for (var i = 0; i < game.links.length; i++) {
+    dot += '"' + game.links[i].text + '"';
     
-    if (i != request.current_game.links.length-1) {
+    if (i != game.links.length-1) {
       dot += ' -> ';
     }
   }
