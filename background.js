@@ -7,6 +7,8 @@ chrome.runtime.onMessage.addListener(
 );
 
 function generateResultsFor(game) {
+  console.log('womt_game_ended');
+  
   var dot = 'digraph D { ';
   
   for (var i = 0; i < request.current_game.links.length; i++) {
@@ -18,6 +20,8 @@ function generateResultsFor(game) {
   }
   
   dot += ' ; }';
+  
+  console.log(dot);
   
   var file = new File([dot], {type: "text/plain;charset=utf-8"});
   saveAs(file, "vis.dot");
