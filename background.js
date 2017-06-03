@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
+  function(request, sender, sendResponse) {    
     if( request.message === "womt_game_ended" ) {
       generateResultsFor(request.current_game);
     }
@@ -7,13 +7,18 @@ chrome.runtime.onMessage.addListener(
 );
 
 function generateResultsFor(game) {
-  var pdf = new jsPDF();
-
-  pdf.text(20, 20, "Session #" + game.session_id);
-
-  for (var i = 0; i < game.links.length; i++) {
-    pdf.text(20, 30 + (i * 10), game.links[i].text + " " + "(" + game.links[i].href + ")");
+  var dot = 'digraph D { ';
+  
+  for (var i = 0; i < request.current_game.links.length; i++) {
+    dot += '"' + request.current_game.links[i].text + '"';
+    
+    if (i != request.current_game.links.length-1) {
+      dot += ' -> ';
+    }
   }
-
-  pdf.save("womt.pdf");
+  
+  dot += ' ; }';
+  
+  var file = new File([dot], {type: "text/plain;charset=utf-8"});
+  saveAs(file, "vis.dot");
 }

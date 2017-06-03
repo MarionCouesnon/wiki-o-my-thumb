@@ -53,6 +53,7 @@ var sessions = [
 if ( sessionId = sessionShouldStart() ) {
   // opening ceremony of the game
   console.log("WOMT game started");
+  chrome.runtime.sendMessage({ "message": "womt_game_start", "yo": "hey" });
   localStorage.setItem("womt_current_game", JSON.stringify({ "session_id": sessionId, "links": [] }));
 }
 
@@ -107,9 +108,8 @@ function storeClickedLinkFor(currentGame) {
   // track clicked links using jQuery
   $("a").click(function() {
 
-    // create an object with the link href and title
+    // create an object with the title
     var link = {
-      href: $(this).attr("href"),
       text: $(this).text()
     }
 
