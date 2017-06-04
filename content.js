@@ -7,58 +7,58 @@ var sessions = [
     id: 1,
     startPage: "Cacaoyer",
     endPage: "Unterseeboot"
-  }/*,
+  },
   {
     id: 2,
-    startUrl: 'https://fr.wikipedia.org/wiki/Pentagramme',
-    endUrl: 'https://fr.wikipedia.org/wiki/Shinkansen'
+    startUrl: "Pentagramme",
+    endUrl: "Shinkansen"
   },
   {
     id: 3,
-    startUrl: 'https://fr.wikipedia.org/wiki/Effet_Doppler',
-    endUrl: 'https://fr.wikipedia.org/wiki/Babylone'
+    startUrl: "Effet Doppler",
+    endUrl: "Babylone"
   },
   {
     id: 4,
-    startUrl: 'https://fr.wikipedia.org/wiki/Super_Bowl',
-    endUrl: 'https://fr.wikipedia.org/wiki/Giacomo_Casanova'
+    startUrl: "Super Bowl",
+    endUrl: "Giacomo Casanova"
   },
   {
     id: 5,
-    startUrl: 'https://fr.wikipedia.org/wiki/V%C3%A9suve',
-    endUrl: 'https://fr.wikipedia.org/wiki/Deep_Blue'
+    startUrl: "Vésuve",
+    endUrl: "Deep Blue"
   },
   {
     id: 6,
-    startUrl: 'https://fr.wikipedia.org/wiki/Dopamine',
-    endUrl: 'https://fr.wikipedia.org/wiki/%C3%89conomie_circulaire'
+    startUrl: "Dopamine",
+    endUrl: "Économie circulaire"
   },
   {
     id: 7,
-    startUrl: 'https://fr.m.wikipedia.org/wiki/Pandore',
-    endUrl: 'https://fr.m.wikipedia.org/wiki/Post-it'
+    startUrl: "Pandore",
+    endUrl: "Post-it"
   },
   {
     id: 8,
-    startUrl: 'https://en.wikipedia.org/wiki/Paresseux',
-    endUrl: 'https://en.wikipedia.org/wiki/Brucelles'
+    startUrl: "Paresseux",
+    endUrl: "Brucelles"
   },
   {
     id: 9,
-    startUrl: 'https://fr.wikipedia.org/wiki/Narcos',
-    endUrl: 'https://fr.wikipedia.org/wiki/Tay_(intelligence_artificielle)'
-  }*/
+    startUrl: "Narcos",
+    endUrl: "Tay (intelligence artificielle)"
+  }
 ];
 
 if ( sessionId = sessionShouldStart() ) {
   // opening ceremony of the game
   console.log("WOMT game started");
-  
-  localStorage.setItem("womt_current_game", JSON.stringify({ 
-    "session_id": sessionId, 
-    "startPage" : findSessionById(sessionId).startPage, 
-    "endPage" : findSessionById(sessionId).endPage, 
-    "links": [] 
+
+  localStorage.setItem("womt_current_game", JSON.stringify({
+    "session_id": sessionId,
+    "startPage" : findSessionById(sessionId).startPage,
+    "endPage" : findSessionById(sessionId).endPage,
+    "links": []
   }));
 }
 
@@ -88,7 +88,7 @@ function findSessionById(id) {
 function sessionShouldEnd() {
   if (game = currentGame()) {
     currentSessionId = game.session_id;
-    
+
     var wikiPageTitle = $('#firstHeading').text();
 
     return (wikiPageTitle == findSessionById(currentSessionId).endPage);
@@ -97,14 +97,14 @@ function sessionShouldEnd() {
 
 function sessionShouldStart() {
   for (var i = 0; i < sessions.length; i++) {
-    
+
 /*
     var s = currentUrl;
     var regex = /https?:\/\/[a-zA-Z0-9\.]+\.wikipedia\.[a-zA-Z]{2,4}/;
-    
+
     if (s.match(regex)) {
 */
-      
+
     var wikiPageTitle = $('#firstHeading').text();
 
     if (wikiPageTitle == sessions[i].startPage) {
