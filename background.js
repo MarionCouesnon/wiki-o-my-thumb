@@ -24,8 +24,8 @@ function generateResultsFor(game) {
   if (factor >= 17) {
     dotAttributes += 'size="8.3,11.7!"; graph[layout=fdp] node[fontsize="14"] overlap="scalexy"; ratio=fill; margin=0; node[shape=box] node[fontname="HersheySans"]';
   }
-  
-  var pages = ['yo'];
+
+  var pages = [];
 
   var dot = 'digraph D { ';
 
@@ -33,11 +33,11 @@ function generateResultsFor(game) {
 
     dot += escapeWordForDot(game.startPage);
     dot += ' -> ';
-    
+
     for (var i = 0; i < game.links.length; i++) {
       pages.push(escapeWordForDot(game.links[i].text));
     }
-    
+
     dot += pages.join(' -> ');
 
   //  dot += escapeWordForDot(game.endPage);
