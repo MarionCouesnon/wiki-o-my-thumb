@@ -27,18 +27,21 @@ function generateResultsFor(game) {
 
   var dot = 'digraph D { ';
 
-  dot += dotAttributes;
+    dot += dotAttributes;
 
-  dot += escapeWordForDot(game.startPage);
-  dot += ' -> ';
-
-  for (var i = 0; i < game.links.length; i++) {
-    dot += escapeWordForDot(game.links[i].text);
+    dot += escapeWordForDot(game.startPage);
     dot += ' -> ';
-  }
 
-  dot += escapeWordForDot(game.endPage);
-  dot += ' ; }';
+    for (var i = 0; i < game.links.length; i++) {
+      dot += escapeWordForDot(game.links[i].text);
+      if (i-1 != game.links.length) {
+        dot += ' -> ';
+        console.log(i+" / "+game.links.length);
+      }
+    }
+
+  //  dot += escapeWordForDot(game.endPage);
+    dot += ' ; }';
 
   console.log(dot);
 

@@ -10,43 +10,43 @@ var sessions = [
   },
   {
     id: 2,
-    startUrl: "Pentagramme",
-    endUrl: "Shinkansen"
+    startPage: "Pentagramme",
+    endPage: "Shinkansen"
   },
   {
     id: 3,
-    startUrl: "Effet Doppler",
-    endUrl: "Babylone"
+    startPage: "Effet Doppler",
+    endPage: "Babylone"
   },
   {
     id: 4,
-    startUrl: "Super Bowl",
-    endUrl: "Giacomo Casanova"
+    startPage: "Super Bowl",
+    endPage: "Giacomo Casanova"
   },
   {
     id: 5,
-    startUrl: "Vésuve",
-    endUrl: "Deep Blue"
+    startPage: "Vésuve",
+    endPage: "Deep Blue"
   },
   {
     id: 6,
-    startUrl: "Dopamine",
-    endUrl: "Économie circulaire"
+    startPage: "Dopamine",
+    endPage: "Économie circulaire"
   },
   {
     id: 7,
-    startUrl: "Pandore",
-    endUrl: "Post-it"
+    startPage: "Pandore",
+    endPage: "Post-it"
   },
   {
     id: 8,
-    startUrl: "Paresseux",
-    endUrl: "Brucelles"
+    startPage: "Paresseux",
+    endPage: "Brucelles"
   },
   {
     id: 9,
-    startUrl: "Narcos",
-    endUrl: "Tay (intelligence artificielle)"
+    startPage: "Narcos",
+    endPage: "Tay (intelligence artificielle)"
   }
 ];
 
